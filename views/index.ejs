@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+  <h1>short url generator</h1>
+
+  <% if (locals.id){ %>
+  <p>URL Generated <b>http://localhost:3000/analytics/<%=id%></b> </p>
+ <% } %>
+
+ <form method="post" action="/url/check">
+  <p>Enter original url</p>
+  <input type="text" name="link" placeholder="https://example.com">
+  <button type="submit">Generate</button>
+ </form>
+
+<table>
+  <thead>
+    <th>s.no</th>
+    <th>shortid</th>
+    <th>redirect</th>
+    <th>clicks</th>
+  </thead>
+  <tbody>
+   <% cust_arr.forEach((ar,index)=>{ %>
+      <tr>
+        <td><%= index +1 %> </td>
+<td><%= ar.shortId %> </td>
+<td><%= ar.redirectURL %> </td>
+<td><%= ar.visitHistory.length %> </td>
+      </tr>
+
+   <% }); %>
+  </tbody>
+</table>
+
+
+</body>
+</html>
