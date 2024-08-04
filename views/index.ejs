@@ -1,44 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<%- include('partials/header') %>
 
+<div class="indexPart">
   <h1>short url generator</h1>
 
+
   <% if (locals.id){ %>
-  <p>URL Generated <b>http://localhost:3000/analytics/<%=id%></b> </p>
- <% } %>
-
- <form method="post" action="/url/check">
-  <p>Enter original url</p>
-  <input type="text" name="link" placeholder="https://example.com">
-  <button type="submit">Generate</button>
- </form>
-
-<table>
-  <thead>
-    <th>s.no</th>
-    <th>shortid</th>
-    <th>redirect</th>
-    <th>clicks</th>
-  </thead>
-  <tbody>
-   <% cust_arr.forEach((ar,index)=>{ %>
-      <tr>
-        <td><%= index +1 %> </td>
-<td><%= ar.shortId %> </td>
-<td><%= ar.redirectURL %> </td>
-<td><%= ar.visitHistory.length %> </td>
-      </tr>
-
-   <% }); %>
-  </tbody>
-</table>
+    <p>URL Generated <b>http://localhost:3000/analytics/<%=id%></b> </p>
+   <% } %>
 
 
-</body>
-</html>
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Shortened URLs</h2>
+          <table class="table table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">S.No</th>
+                <th scope="col">Short ID</th>
+                <th scope="col">Redirect URL</th>
+                <th scope="col">Clicks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% cust_arr.forEach((ar, index) => { %>
+                <tr>
+                  <th scope="row"><%= index + 1 %></th>
+                  <td><%= ar.shortId %></td>
+                  <td><a href="<%= ar.redirectURL %>" target="_blank"><%= ar.redirectURL %></a></td>
+                  <td><%= ar.visitHistory.length %></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">URL Shortener</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <form method="post" action="/url/check">
+            <div class="mb-3">
+              <label for="link" class="form-label">Enter original URL</label>
+              <input type="text" class="form-control" id="link" name="link" placeholder="https://example.com" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div> 
+</div>
+<br><br><br>
+<%- include('partials/footer') %>
