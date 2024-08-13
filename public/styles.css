@@ -1,8 +1,8 @@
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(5, 41, 66);
 }
 nav{
-    background-color: rgb(226, 52, 89);
+    background-color: rgb(19, 103, 136);
 
 }
 .nav-item a{
@@ -31,7 +31,7 @@ nav{
 }
 
 footer{
-    background-color: rgb(24, 34, 82);
+    background-color: rgb(24, 64, 82);
     margin-bottom: -1%;
     color: white;
 }
@@ -54,4 +54,17 @@ footer li a{
     color: rgb(3, 0, 0);
     background: rgb(255, 255, 255);
     margin:4px;
+}
+
+.forbg{
+background: rgb(12, 116, 148);
+color: white;
+}
+.parentdiv{
+    display: flex;
+}
+.lef {
+    color: white;
+    text-align: justify;
+    padding-right: 50px;
 }
