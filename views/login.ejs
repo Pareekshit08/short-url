@@ -1,8 +1,5 @@
 <%- include('partials/header') %>
 
-
-    <h4><%=error%></h4>
-
 <!-- 
 <form action="/user/login" method="post">
     <label>Email:</label>
@@ -21,8 +18,11 @@
                 <div class="card-header">
                     <h3 class="text-center">Login</h3>
                 </div>
+                <center>
+                    <h4 style="color: red;"><%=error%></h4>
+                </center>
                 <div class="card-body">
-                    <form action="/user/login" method="post">
+                    <form  action="/user/login" method="post">
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email">
@@ -32,8 +32,11 @@
                             <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password">
                             <br>
                         </div>
+                        <div class="inaline">
+                            <a href="/signup"><small> <p>Dont have an Account? Sign Up</p></small> </a>
+                        </div>
                             <center>
-                                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
                             </center>
                     </form>
                 </div>
@@ -41,5 +44,5 @@
         </div>
     </div>
 </div>
-
+<br><br>
 <%- include('partials/footer') %>

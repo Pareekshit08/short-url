@@ -41,18 +41,33 @@ app.post("/url/check",async (req,res)=>{
         };
 const shortId = shortid();
 console.log(shortId);
-await URL.create({
-    shortId:shortId,
-    redirectURL:body.link,
-    visitHistory:[],
-    createdBy:req.user._id
-}).then(()=>{
-    console.log("shortid inserted in database");
-}).catch((err)=>{
-    console.log("nope shortid not inserted");
-});
-const ar = await URL.find({createdBy:req.user._id});
-return res.render("index",{id:shortId,cust_arr:ar});
+const checking = async()=>{
+   const findurl = await URL.findOne({createdBy:req.user._id,redirectURL:body.link,});
+   if(findurl){
+    return true;
+   }else{
+    return false;
+   }
+}
+
+if(await checking()){
+   res.send("url already present") ;
+}
+else{
+    await URL.create({
+        shortId:shortId,
+        redirectURL:body.link,
+        visitHistory:[],
+        createdBy:req.user._id
+    }).then(()=>{
+        console.log("shortid inserted in database");
+    }).catch((err)=>{
+        console.log("nope shortid not inserted");
+    });
+    const ar = await URL.find({createdBy:req.user._id});
+    return res.render("index",{id:shortId,cust_arr:ar});
+}
+
 });
 
 app.get('/analytics/:shortId',async (req,res)=>{
