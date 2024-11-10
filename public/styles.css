@@ -1,9 +1,9 @@
 body{
     background-color: rgb(5, 41, 66);
 }
+
 nav{
     background-color: rgb(19, 103, 136);
-
 }
 .nav-item a{
     color: white;
@@ -67,4 +67,41 @@ color: white;
     color: white;
     text-align: justify;
     padding-right: 50px;
+}
+
+.shortUrl{
+visibility: hidden;
+}
+td {
+    position: relative;}
+  
+ .copy-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none; }
+
+
+.modal{
+    color: rgb(255, 255, 255);
+}
+
+.modal-content{
+    background-color: rgb(11, 30, 46);
+}
+
+.modal input{
+    color: white;
+    width: 100%;
+    border-style: none;
+    border: solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: rgb(11, 30, 46);
+    outline: none;
+}
+.modal input::placeholder{
+    color: rgba(255, 255, 255, 0.744);
 }
